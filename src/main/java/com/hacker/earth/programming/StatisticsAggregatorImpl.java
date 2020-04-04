@@ -10,7 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 			private static Map<String,Integer> tickermap = new HashMap<String,Integer>();
 			
 			
-			public void putNewPrice(String symbol, double price) {				
+			public void putNewPrice(String symbol, double price) {	
+				symbol = symbol.trim();
 				if(priceMap.containsKey(symbol) && tickermap.containsKey(symbol)){
 					double lastPrice = priceMap.get(symbol);
 					priceMap.put(symbol, price+lastPrice);
@@ -23,6 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
 			}
 
 			public double getAveragePrice(String symbol) {
+				symbol = symbol.trim();
 				if(priceMap.containsKey(symbol) && tickermap.containsKey(symbol)){
 					double lastPrice = priceMap.get(symbol);
 					int ticker = tickermap.get(symbol);
@@ -33,6 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 			public int getTickCount(String symbol) {
+				symbol = symbol.trim();
 				if(tickermap.containsKey(symbol)) {
 					 return tickermap.get(symbol);
 				}else {
